@@ -1,5 +1,3 @@
-import json
-
 from flask import jsonify
 
 from middleware import *
@@ -12,6 +10,10 @@ def initialize_routes(app):
 
     app.add_url_rule('/api/hello', 'hello', hello)
     app.add_url_rule('/api/', 'list_routes', list_routes, defaults={'app': app})
+    app.add_url_rule('/api/profile/<id>', 'user_profile', user_profile)
+    app.add_url_rule('/api/people/', 'people_details', people_details)  # GET
+    app.add_url_rule('/api/people/', 'person_add', person_add, methods=["POST"])  # POST
+    app.add_url_rule('/api/people/', 'update_people', update_people, methods=["PUT"])  # PUT
 
 
 def list_routes(app):
